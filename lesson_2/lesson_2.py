@@ -125,6 +125,7 @@ def prepare_mnist() -> pd.DataFrame:
 
 
 def mnist(data: pd.DataFrame):
+    start_time = time.time()
     path: str = Path.cwd().__str__() + '/'
     raw_data = pd.read_csv(path + MNIST_FILE_NAME)
     warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -138,10 +139,12 @@ def mnist(data: pd.DataFrame):
 
     plt.figure()
     sns.scatterplot(x='x', y='y', hue=raw_data['label'], data=d, palette='bright')
+    print("Execution time: %s" % (time.time() - start_time))
     plt.show()
 
 
 def umapF(data: pd.DataFrame):
+    start_time = time.time()
     path: str = Path.cwd().__str__() + '/'
     raw_data = pd.read_csv(path + MNIST_FILE_NAME)
 
@@ -154,6 +157,7 @@ def umapF(data: pd.DataFrame):
 
     plt.figure()
     sns.scatterplot(x='x', y='y', hue=raw_data['label'], data=d, palette='bright')
+    print("Execution time: %s" % (time.time() - start_time))
     plt.show()
 
 
